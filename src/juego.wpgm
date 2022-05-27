@@ -17,9 +17,6 @@ program juego {
 	game.onTick(100, "movarBalas", { balas.balas().forEach({bala => bala.avanzar()})})
 	game.onTick(1000, "movarBalas", { constructorDeTanques.tanques().forEach({tanque => tanque.mover()})})
 	game.onTick(1000, "crearTanques", { constructorDeTanques.crearTanque()})
-	
-	
-	
-	
+		
 	game.start()
 }
