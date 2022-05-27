@@ -1,7 +1,22 @@
 import wollok.game.*
-import pepita.*
+import tank.*
 
 program juego {
-	game.addVisual(pepita)
+	game.title("Battle City")
+//	game.boardGround("fondo.jpg")
+	game.cellSize(55)
+	game.height(11)
+	game.width(11)
+//	game.ground("ground.png")
+	game.addVisualCharacter(tank)
+//	var tanque1 = new EnemyTank()
+//	game.addVisual(tanque1)
+//	game.onTick(1000, "movarTanque", { tanque1.mover()})
+//	tanque1.mover()
+	keyboard.space().onPressDo({ tank.disparar() })
+	game.onTick(100, "movarBalas", { balas.balas().forEach({bala => bala.avanzar()})})
+	game.onTick(1000, "movarBalas", { constructorDeTanques.tanques().forEach({tanque => tanque.mover()})})
+	game.onTick(1000, "crearTanques", { constructorDeTanques.crearTanque()})
+		
 	game.start()
 }
