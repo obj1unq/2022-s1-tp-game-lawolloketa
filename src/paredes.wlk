@@ -6,6 +6,8 @@ import balas.*
 class Pared {
 
 	var property position = null
+	var property destruible = true
+	const property atravesable = false
 
 	method image() = "pared.png"
 
