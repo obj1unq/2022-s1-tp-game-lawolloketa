@@ -7,7 +7,7 @@ class EnemyTank {
 
 	var property position = game.at(5, 5)
 
-	method image() = "tank_down.png"
+	method image() = "enemigo_1_down_down_01.png"
 
 	method mover() {
 		const posiciones = #{ position.up(1), position.down(1), position.right(1), position.left(1) }

@@ -7,7 +7,7 @@ object tank {
 
 	var property position = game.at(5, 0)
 
-	method image() = "tank_up.png"
+	method image() = "tanque_up_up_01.png"
 
 	method disparar() {
 		const bala = new Bala()

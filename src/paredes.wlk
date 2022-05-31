@@ -9,7 +9,7 @@ class Pared {
 	var property destruible = true
 	const property atravesable = false
 
-	method image() = "pared.png"
+	method image() = "pared_1.png"
 
 }
 
