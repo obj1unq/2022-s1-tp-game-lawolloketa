@@ -17,8 +17,8 @@ program juego {
 //	game.onTick(1000, "movarTanque", { tanque1.mover()})
 //	tanque1.mover()
 	keyboard.space().onPressDo({ tank.disparar() })
-	game.onTick(100, "movarBalas", { administradorBalas.balas().forEach({ bala => bala.avanzar()}) })
-	game.onTick(1000, "movarBalas", { constructorDeTanques.tanques().forEach({ tanque => tanque.mover()}) })
+	game.onTick(100, "moverBalas", { administradorBalas.balas().forEach({ bala => bala.avanzar()}) })
+	game.onTick(1000, "moverTanques", { constructorDeTanques.tanques().forEach({ tanque => tanque.mover()}) })
 	game.onTick(1000, "crearTanques", { constructorDeTanques.crearTanque() })
 	game.start()
 }

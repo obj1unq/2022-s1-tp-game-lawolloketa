@@ -3,12 +3,6 @@ import tank.*
 import enemigos.*
 import paredes.*
 
-//object creadorDeBalas() {
-//	method crearBala(){
-//		const bala = new Bala()
-//		
-//	}
-//}
 class Bala {
 
 	var property position = null
@@ -25,11 +19,18 @@ object administradorBalas {
 
 	const property balas = []
 
-	method agregar(bala) {
+	method disparar() {
+		const bala = new Bala()
 		balas.add(bala)
+		bala.position(tank.position())
+		game.addVisual(bala)
+		bala.avanzar()
+	}
+
+	method impactar(bala) {
+		balas.remove(bala)
+		game.removeVisual(bala)
 	}
 
 }
-
-
 

@@ -10,11 +10,7 @@ object tank {
 	method image() = "tanque_up_up_01.png"
 
 	method disparar() {
-		const bala = new Bala()
-		administradorBalas.agregar(bala)
-		bala.position(position)
-		game.addVisual(bala)
-		bala.avanzar()
+		administradorBalas.disparar()
 	}
 
 }
