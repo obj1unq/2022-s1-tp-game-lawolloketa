@@ -21,6 +21,15 @@ class Tanque {
 
 }
 
+class TanquePesado inherits Tanque{
+	
+	override method image() = "enemigo_1_down_down_01.png"
+}
+
+class TanqueLiviano inherits Tanque{
+	override method image() = "enemigo_1_down_down_01.png"
+}
+
 object administradorDeTanques {
 
 	const max = 3
