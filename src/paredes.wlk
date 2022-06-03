@@ -9,7 +9,21 @@ class Pared {
 	var property destruible = true
 	const property atravesable = false
 
-	method image() = "pared_1.png"
+	method image()
+
+	method recibirDanio()
+
+}
+
+class ParedDeLadrillo inherits Pared {
+
+	override method image() = "pared_1.png"
+
+}
+
+class ParedDeMadera inherits Pared {
+
+	override method image() = "pared_1.png"
 
 }
 

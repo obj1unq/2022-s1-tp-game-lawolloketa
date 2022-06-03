@@ -11,15 +11,34 @@ class Bala {
 
 	method avanzar() {
 		position = position.up(1)
+		self.impactar()
+	}
+
+	method impactar() {
+		if (game.colliders(self).size() == 1) {
+			game.uniqueCollider(self).recibirDanio()
+			administradorDeBalas.eliminarBala(self)
+		}
+	}
+	
+	method recibirDanio(){
 	}
 
 }
 
-object administradorBalas {
+class BalaLiviana inherits Bala {
+
+}
+
+class BalaPesada inherits Bala {
+
+}
+
+object administradorDeBalas {
 
 	const property balas = []
 
-	method disparar() {
+	method crearBala() {
 		const bala = new Bala()
 		balas.add(bala)
 		bala.position(tank.position())
@@ -27,7 +46,7 @@ object administradorBalas {
 		bala.avanzar()
 	}
 
-	method impactar(bala) {
+	method eliminarBala(bala) {
 		balas.remove(bala)
 		game.removeVisual(bala)
 	}

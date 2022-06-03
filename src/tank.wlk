@@ -10,8 +10,11 @@ object tank {
 	method image() = "tanque_up_up_01.png"
 
 	method disparar() {
-		administradorBalas.disparar()
+		administradorDeBalas.crearBala()
 	}
 
+	method recibirDanio(){
+		
+	}
 }
 
