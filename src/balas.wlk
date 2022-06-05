@@ -20,8 +20,8 @@ class Bala {
 			administradorDeBalas.eliminarBala(self)
 		}
 	}
-	
-	method recibirDanio(){
+
+	method recibirDanio() {
 	}
 
 }
@@ -49,6 +49,10 @@ object administradorDeBalas {
 	method eliminarBala(bala) {
 		balas.remove(bala)
 		game.removeVisual(bala)
+	}
+
+	method moverBalas() {
+		balas.forEach({ bala => bala.avanzar()})
 	}
 
 }

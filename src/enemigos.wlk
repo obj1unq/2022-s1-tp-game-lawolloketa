@@ -13,21 +13,24 @@ class Tanque {
 		const posiciones = #{ position.up(1), position.down(1), position.right(1), position.left(1) }
 		position = posiciones.anyOne()
 	}
-	
-	method recibirDanio(){
+
+	method recibirDanio() {
 		administradorDeTanques.eliminarTanque(self)
 		game.removeVisual(self)
 	}
 
 }
 
-class TanquePesado inherits Tanque{
-	
+class TanquePesado inherits Tanque {
+
 	override method image() = "enemigo_1_down_down_01.png"
+
 }
 
-class TanqueLiviano inherits Tanque{
+class TanqueLiviano inherits Tanque {
+
 	override method image() = "enemigo_1_down_down_01.png"
+
 }
 
 object administradorDeTanques {
@@ -42,9 +45,13 @@ object administradorDeTanques {
 			game.addVisual(tanque)
 		}
 	}
-	
-	method eliminarTanque(tanque){
+
+	method eliminarTanque(tanque) {
 		tanques.remove(tanque)
+	}
+
+	method moverTanques() {
+		tanques.forEach({ tanque => tanque.mover()})
 	}
 
 }
