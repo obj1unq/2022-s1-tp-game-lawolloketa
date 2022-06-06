@@ -16,7 +16,6 @@ class Tanque {
 
 	method recibirDanio() {
 		administradorDeTanques.eliminarTanque(self)
-		game.removeVisual(self)
 	}
 
 }
@@ -48,6 +47,7 @@ object administradorDeTanques {
 
 	method eliminarTanque(tanque) {
 		tanques.remove(tanque)
+		game.removeVisual(tanque)
 	}
 
 	method moverTanques() {

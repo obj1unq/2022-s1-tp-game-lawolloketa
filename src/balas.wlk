@@ -19,9 +19,11 @@ class Bala {
 			game.uniqueCollider(self).recibirDanio()
 			administradorDeBalas.eliminarBala(self)
 		}
+		//game.colliders(self).forEach({collider => collider.recibirDanio()})
 	}
 
 	method recibirDanio() {
+		
 	}
 
 }
@@ -43,7 +45,6 @@ object administradorDeBalas {
 		balas.add(bala)
 		bala.position(tank.position())
 		game.addVisual(bala)
-		bala.avanzar()
 	}
 
 	method eliminarBala(bala) {
