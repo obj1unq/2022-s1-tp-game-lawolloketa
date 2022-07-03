@@ -3,6 +3,8 @@ import tank.*
 import enemigos.*
 import balas.*
 
+
+
 class Pared {
 
 	var property position = game.at(1, 1)

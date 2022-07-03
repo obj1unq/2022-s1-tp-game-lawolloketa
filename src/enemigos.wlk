@@ -2,16 +2,25 @@ import wollok.game.*
 import tank.*
 import balas.*
 import paredes.*
+import extras.*
 
 class Tanque {
 
 	var property position = game.at(5, 5)
-
-	method image() = "enemigo_1_down_down_01.png"
+	var property image = "enemigo_1_abajo_01.png"
+	var property direccionActual = abajo
 
 	method mover() {
-		const posiciones = #{ position.up(1), position.down(1), position.right(1), position.left(1) }
-		position = posiciones.anyOne()
+		const direcciones = #{ arriba, abajo, derecha, izquierda}
+		const nuevaDireccion = direcciones.anyOne()
+		if (direccionActual != nuevaDireccion) {
+			self.image("enemigo_1_" + nuevaDireccion.direccionATexto() + "_01.png")
+			direccionActual = nuevaDireccion
+		}
+		const direccion = nuevaDireccion.siguiente(self.position())
+		if (administradorDeDestinos.destinoValido(direccion)) {
+			self.position(direccion)
+		}
 	}
 
 	method recibirDanio() {
@@ -39,19 +48,19 @@ object administradorDeTanques {
 
 	method crearTanque() {
 		if (tanques.size() < max) {
-			const tanque = new Tanque()
-			tanques.add(tanque)
-			game.addVisual(tanque)
+			const tanqueNuevo = new Tanque()
+			tanques.add(tanqueNuevo)
+			game.addVisual(tanqueNuevo)
 		}
 	}
 
-	method eliminarTanque(tanque) {
-		tanques.remove(tanque)
-		game.removeVisual(tanque)
+	method eliminarTanque(tanqueEliminado) {
+		tanques.remove(tanqueEliminado)
+		game.removeVisual(tanqueEliminado)
 	}
 
 	method moverTanques() {
-		tanques.forEach({ tanque => tanque.mover()})
+		tanques.forEach({ tanqueEnemigo => tanqueEnemigo.mover()})
 	}
 
 }

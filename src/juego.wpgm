@@ -3,6 +3,7 @@ import tank.*
 import enemigos.*
 import balas.*
 import paredes.*
+import extras.*
 
 program juego {
 	game.title("Battle City")
@@ -11,14 +12,18 @@ program juego {
 	game.height(11)
 	game.width(11)
 //	game.ground("ground.png")
-	game.addVisualCharacter(tank)
+	game.addVisual(tanque)
 //	var tanque1 = new EnemyTank()
 //	game.addVisual(tanque1)
 //	game.onTick(1000, "movarTanque", { tanque1.mover()})
 //	tanque1.mover()
-	keyboard.space().onPressDo({ tank.disparar() })
+	keyboard.left().onPressDo({ tanque.mover(izquierda) })
+	keyboard.right().onPressDo({ tanque.mover(derecha) })
+	keyboard.up().onPressDo({ tanque.mover(arriba) })
+	keyboard.down().onPressDo({ tanque.mover(abajo) })
+	keyboard.space().onPressDo({ tanque.disparar() })
 	game.onTick(200, "moverBalas", { administradorDeBalas.moverBalas() })
-	game.onTick(1000, "moverTanques", { administradorDeTanques.moverTanques() })
 	game.onTick(1000, "crearTanques", { administradorDeTanques.crearTanque() })
+	game.onTick(1000, "moverTanques", { administradorDeTanques.moverTanques() })
 	game.start()
 }

@@ -2,15 +2,18 @@ import wollok.game.*
 import tank.*
 import enemigos.*
 import paredes.*
+import extras.*
+
 
 class Bala {
 
 	var property position = null
+	var property direccion = null
 
 	method image() = "bala_vertical_2.png"
 
 	method avanzar() {
-		position = position.up(1)
+		self.position(direccion.siguiente(self.position()))
 		self.impactar()
 	}
 
@@ -39,11 +42,13 @@ class BalaPesada inherits Bala {
 object administradorDeBalas {
 
 	const property balas = []
+	
 
 	method crearBala() {
 		const bala = new Bala()
 		balas.add(bala)
-		bala.position(tank.position())
+		bala.position(tanque.position())
+		bala.direccion(tanque.direccionActual())
 		game.addVisual(bala)
 	}
 
