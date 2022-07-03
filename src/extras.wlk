@@ -48,14 +48,21 @@ object abajo {
 
 }
 
-object administradorDeDestinos{
-	method destinoValido(direccion) {
-		return direccion.x().between(0, game.width() - 1) and
-			   direccion.y().between(0, game.height() -1) and
-			   game.getObjectsIn(direccion).size() == 0
-			 
-			   
+object direcciones {
+
+	method todas() {
+		return [arriba, derecha, abajo, izquierda]
 	}
+
 }
 
+object administradorDeDestinos {
+
+	method destinoValido(direccion) {
+		return direccion.x().between(0, game.width() - 1)
+			and direccion.y().between(0, game.height() - 1)
+			and game.getObjectsIn(direccion).size() == 0
+	}
+
+}
 

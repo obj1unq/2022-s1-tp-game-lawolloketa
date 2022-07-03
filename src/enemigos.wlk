@@ -3,19 +3,18 @@ import tank.*
 import balas.*
 import paredes.*
 import extras.*
-//agrego comentario para poder commitear
+
 class Tanque {
 
 	var property position = game.at(5, 5)
 	var property image = "enemigo_1_abajo_01.png"
-	var property direccionActual = abajo
+	var property orientacion = abajo
 
 	method mover() {
-		const direcciones = #{ arriba, abajo, derecha, izquierda}
-		const nuevaDireccion = direcciones.anyOne()
-		if (direccionActual != nuevaDireccion) {
+		const nuevaDireccion = direcciones.todas().anyOne()
+		if (orientacion != nuevaDireccion) {
 			self.image("enemigo_1_" + nuevaDireccion.direccionATexto() + "_01.png")
-			direccionActual = nuevaDireccion
+			orientacion = nuevaDireccion
 		}
 		const direccion = nuevaDireccion.siguiente(self.position())
 		if (administradorDeDestinos.destinoValido(direccion)) {
