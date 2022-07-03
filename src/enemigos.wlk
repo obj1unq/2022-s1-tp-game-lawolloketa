@@ -3,7 +3,7 @@ import tank.*
 import balas.*
 import paredes.*
 import extras.*
-
+//agrego comentario para poder commitear
 class Tanque {
 
 	var property position = game.at(5, 5)
