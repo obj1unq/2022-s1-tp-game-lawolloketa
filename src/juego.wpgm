@@ -4,26 +4,29 @@ import enemigos.*
 import balas.*
 import paredes.*
 import extras.*
+import mapas.*
 
 program juego {
 	game.title("Battle City")
 //	game.boardGround("fondo.jpg")
-	game.cellSize(55)
-	game.height(11)
-	game.width(11)
+	game.cellSize(45)
+	game.height(15)
+	game.width(15)
 //	game.ground("ground.png")
 	game.addVisual(tanque)
 //	var tanque1 = new EnemyTank()
 //	game.addVisual(tanque1)
 //	game.onTick(1000, "movarTanque", { tanque1.mover()})
 //	tanque1.mover()
+	mapa.bordeDelMapa(0)
 	keyboard.left().onPressDo({ tanque.mover(izquierda) })
 	keyboard.right().onPressDo({ tanque.mover(derecha) })
 	keyboard.up().onPressDo({ tanque.mover(arriba) })
 	keyboard.down().onPressDo({ tanque.mover(abajo) })
 	keyboard.space().onPressDo({ tanque.disparar() })
-	game.onTick(200, "moverBalas", { administradorDeBalas.moverBalas() })
-	game.onTick(1000, "crearTanques", { administradorDeTanques.crearTanque() })
+	game.onTick(100, "moverBalas", { administradorDeBalas.moverBalas() })
+	game.onTick(3000, "crearTanques", { administradorDeTanques.crearTanque() })
+	game.onTick(2000, "dispararEnemigos", { administradorDeTanques.disparar() })
 	game.onTick(1000, "moverTanques", { administradorDeTanques.moverTanques() })
 	game.start()
 }

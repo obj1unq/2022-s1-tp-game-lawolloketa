@@ -11,7 +11,7 @@ class Pared {
 	var property destruible = true
 	const property atravesable = false
 
-	method image()
+	method image() = "pared_1.png"
 
 	method recibirDanio()
 

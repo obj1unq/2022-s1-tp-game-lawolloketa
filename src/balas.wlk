@@ -44,11 +44,11 @@ object administradorDeBalas {
 	const property balas = []
 	
 
-	method crearBala() {
+	method crearBala(_tanque) {
 		const bala = new Bala()
 		balas.add(bala)
-		bala.position(tanque.position())
-		bala.direccion(tanque.direccionActual())
+		bala.position(_tanque.position())
+		bala.direccion(_tanque.orientacion())
 		game.addVisual(bala)
 	}
 

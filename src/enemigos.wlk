@@ -12,18 +12,32 @@ class Tanque {
 
 	method mover() {
 		const nuevaDireccion = direcciones.todas().anyOne()
+		self.cambiarOrientacion(nuevaDireccion)
+		self.avanzar(nuevaDireccion)
+	}
+
+	method avanzar(direccion) {
+		const siguientePosiscion = direccion.siguiente(self.position())
+		if (administradorDeDestinos.destinoValido(siguientePosiscion)){
+			self.position(siguientePosiscion)
+		}
+	}
+
+	method cambiarOrientacion(nuevaDireccion) {
 		if (orientacion != nuevaDireccion) {
 			self.image("enemigo_1_" + nuevaDireccion.direccionATexto() + "_01.png")
 			orientacion = nuevaDireccion
-		}
-		const direccion = nuevaDireccion.siguiente(self.position())
-		if (administradorDeDestinos.destinoValido(direccion)) {
-			self.position(direccion)
 		}
 	}
 
 	method recibirDanio() {
 		administradorDeTanques.eliminarTanque(self)
+	}
+
+	method disparar() {
+		if ([ true, true, false ].anyOne()) {
+			administradorDeBalas.crearBala(self)
+		}
 	}
 
 }
@@ -60,6 +74,10 @@ object administradorDeTanques {
 
 	method moverTanques() {
 		tanques.forEach({ tanqueEnemigo => tanqueEnemigo.mover()})
+	}
+
+	method disparar() {
+		tanques.forEach({ tanqueEnemigo => tanqueEnemigo.disparar()})
 	}
 
 }

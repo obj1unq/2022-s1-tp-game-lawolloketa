@@ -8,12 +8,12 @@ object tanque {
 
 	var property position = game.at(5, 0)
 	var property image = "tanque_arriba_01.png"
-	var property direccionActual = arriba
+	var property orientacion = arriba
 
 	method mover(direccion) {
-		if (direccionActual != direccion) {
+		if (orientacion != direccion) {
 			self.image("tanque_" + direccion.direccionATexto() + "_01.png")
-			direccionActual = direccion
+			orientacion = direccion
 		}
 		if (administradorDeDestinos.destinoValido(direccion.siguiente(self.position()))) {
 			self.position(direccion.siguiente(self.position()))
@@ -21,7 +21,7 @@ object tanque {
 	}
 
 	method disparar() {
-		administradorDeBalas.crearBala()
+		administradorDeBalas.crearBala(self)
 	}
 
 	method recibirDanio() {
