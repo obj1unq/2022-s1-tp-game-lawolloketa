@@ -3,25 +3,28 @@ import tank.*
 import enemigos.*
 import balas.*
 
-
-
 class Pared {
 
 	var property position = game.at(1, 1)
 	var property destruible = true
 	const property atravesable = false
-
-	method image() = "pared_1.png"
+	var property image = "pared_3.png"
+	var property vidas = 3
 
 	method recibirDanio()
+
+	method validarVidas() {
+		if (vidas == 0) game.removeVisual(self)
+	}
 
 }
 
 class ParedDeLadrillo inherits Pared {
 
-	override method image() = "pared_1.png"
-
 	override method recibirDanio() {
+		self.validarVidas()
+		image = "pared_" + vidas + ".png"
+		vidas = vidas - 1
 	}
 
 }

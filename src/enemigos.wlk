@@ -9,6 +9,7 @@ class Tanque {
 	var property position = game.at(5, 5)
 	var property image = "enemigo_1_abajo_01.png"
 	var property orientacion = abajo
+	var property vidas = 3
 
 	method mover() {
 		const nuevaDireccion = direcciones.todas().anyOne()
@@ -18,7 +19,7 @@ class Tanque {
 
 	method avanzar(direccion) {
 		const siguientePosiscion = direccion.siguiente(self.position())
-		if (administradorDeDestinos.destinoValido(siguientePosiscion)){
+		if (administradorDeDestinos.destinoValido(siguientePosiscion)) {
 			self.position(siguientePosiscion)
 		}
 	}
@@ -31,7 +32,12 @@ class Tanque {
 	}
 
 	method recibirDanio() {
-		administradorDeTanques.eliminarTanque(self)
+		self.validarVidas()
+		vidas = vidas - 1
+	}
+
+	method validarVidas() {
+		if (vidas == 0) administradorDeTanques.eliminarTanque(self)
 	}
 
 	method disparar() {

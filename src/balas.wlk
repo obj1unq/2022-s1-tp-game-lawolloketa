@@ -4,7 +4,6 @@ import enemigos.*
 import paredes.*
 import extras.*
 
-
 class Bala {
 
 	var property position = null
@@ -22,11 +21,10 @@ class Bala {
 			game.uniqueCollider(self).recibirDanio()
 			administradorDeBalas.eliminarBala(self)
 		}
-		//game.colliders(self).forEach({collider => collider.recibirDanio()})
+	// game.colliders(self).forEach({collider => collider.recibirDanio()})
 	}
 
 	method recibirDanio() {
-		
 	}
 
 }
@@ -42,7 +40,6 @@ class BalaPesada inherits Bala {
 object administradorDeBalas {
 
 	const property balas = []
-	
 
 	method crearBala(_tanque) {
 		const bala = new Bala()

@@ -51,7 +51,7 @@ object abajo {
 object direcciones {
 
 	method todas() {
-		return [arriba, derecha, abajo, izquierda]
+		return [ arriba, derecha, abajo, izquierda ]
 	}
 
 }
@@ -59,9 +59,7 @@ object direcciones {
 object administradorDeDestinos {
 
 	method destinoValido(direccion) {
-		return direccion.x().between(0, game.width() - 1)
-			and direccion.y().between(0, game.height() - 1)
-			and game.getObjectsIn(direccion).size() == 0
+		return direccion.x().between(0, game.width() - 1) and direccion.y().between(0, game.height() - 1) and game.getObjectsIn(direccion).size() == 0
 	}
 
 }

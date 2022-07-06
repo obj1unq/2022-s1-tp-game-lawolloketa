@@ -29,11 +29,11 @@ object tanque {
 		self.validarVidas()
 		vidas = vidas - 1
 	}
-	
+
 	method validarVidas() {
 		if (vidas == 0) self.perder()
 	}
-	
+
 	method perder() {
 		game.removeVisual(self)
 	}
