@@ -9,6 +9,7 @@ object tanque {
 	var property position = game.at(5, 0)
 	var property image = "tanque_arriba_01.png"
 	var property orientacion = arriba
+	var property vidas = 3
 
 	method mover(direccion) {
 		if (orientacion != direccion) {
@@ -25,6 +26,16 @@ object tanque {
 	}
 
 	method recibirDanio() {
+		self.validarVidas()
+		vidas = vidas - 1
+	}
+	
+	method validarVidas() {
+		if (vidas == 0) self.perder()
+	}
+	
+	method perder() {
+		game.removeVisual(self)
 	}
 
 }
