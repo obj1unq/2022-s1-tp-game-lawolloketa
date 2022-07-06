@@ -37,13 +37,20 @@ class Tanque {
 	}
 
 	method validarVidas() {
-		if (vidas == 0) administradorDeTanques.eliminarTanque(self)
+		if (vidas == 0) {
+			administradorDeTanques.eliminarTanque(self)
+			tanque.sumarPuntos(self)
+		}
 	}
 
 	method disparar() {
 		if ([ true, true, false ].anyOne()) {
 			administradorDeBalas.crearBala(self)
 		}
+	}
+	
+	method puntosQueAporta() {
+		return 500
 	}
 
 }

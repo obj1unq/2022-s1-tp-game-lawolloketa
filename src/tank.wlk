@@ -10,6 +10,7 @@ object tanque {
 	var property image = "tanque_arriba_01.png"
 	var property orientacion = arriba
 	var property vidas = 3
+	var property puntaje = 0
 
 	method mover(direccion) {
 		if (orientacion != direccion) {
@@ -26,16 +27,20 @@ object tanque {
 	}
 
 	method recibirDanio() {
-		self.validarVidas()
+		self.validarPerder()
 		vidas = vidas - 1
 	}
 
-	method validarVidas() {
+	method validarPerder() {
 		if (vidas == 0) self.perder()
 	}
 
 	method perder() {
 		game.removeVisual(self)
+	}
+
+	method sumarPuntos(objeto) {
+		puntaje = puntaje + objeto.puntosQueAporta()
 	}
 
 }

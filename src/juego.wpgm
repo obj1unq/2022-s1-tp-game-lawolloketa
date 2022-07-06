@@ -28,5 +28,6 @@ program juego {
 	game.onTick(3000, "crearTanques", { administradorDeTanques.crearTanque() })
 	game.onTick(2000, "dispararEnemigos", { administradorDeTanques.disparar() })
 	game.onTick(1000, "moverTanques", { administradorDeTanques.moverTanques() })
+	game.showAttributes(tanque)
 	game.start()
 }
