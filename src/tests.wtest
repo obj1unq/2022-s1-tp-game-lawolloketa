@@ -1,4 +1,38 @@
+import wollok.game.*
+import tank.*
+import enemigos.*
+import balas.*
+import paredes.*
+import extras.*
+import mapas.*
 
-test "testX" {
-	assert.that(true)
+describe "Tanque" {
+
+	method initialize() {
+		game.clear()
+	}
+
+	test "Tanque con dos vidas, recibe daño dos veces y queda con 0 vidas" {
+		tanque.vidas(2)
+		tanque.recibirDanio()
+		tanque.recibirDanio()
+		assert.equals(0, tanque.vidas())
+	}
+
+	test "Tanque con una vida desaparece del tablero" {
+		tanque.vidas(1)
+		tanque.recibirDanio()
+		assert.notThat(game.hasVisual(tanque))
+	}
+
+	test "Tanque destruye dos enemigos con una vida y los tanques desaparecen" {
+		var enemigo = new Tanque(vidas = 1)
+		var enemigo2 = new Tanque(vidas = 1)
+		enemigo.recibirDanio()
+		enemigo2.recibirDanio()
+		assert.notThat(game.hasVisual(enemigo))
+		assert.notThat(game.hasVisual(enemigo2))
+	}
+
 }
+

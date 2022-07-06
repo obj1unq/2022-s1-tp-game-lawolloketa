@@ -38,8 +38,8 @@ class Tanque {
 
 	method validarVidas() {
 		if (vidas == 0) {
-			administradorDeTanques.eliminarTanque(self)
 			tanque.sumarPuntos(self)
+			administradorDeTanques.eliminarTanque(self)
 		}
 	}
 
@@ -48,7 +48,7 @@ class Tanque {
 			administradorDeBalas.crearBala(self)
 		}
 	}
-	
+
 	method puntosQueAporta() {
 		return 500
 	}
