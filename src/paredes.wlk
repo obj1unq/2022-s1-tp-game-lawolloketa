@@ -22,9 +22,11 @@ class Pared {
 class ParedDeLadrillo inherits Pared {
 
 	override method recibirDanio() {
-		self.validarVidas()
-		image = "pared_" + vidas + ".png"
-		vidas = vidas - 1
+		if (destruible) {
+			vidas = vidas - 1
+			self.validarVidas()
+			image = "pared_" + vidas + ".png"
+		}
 	}
 
 }

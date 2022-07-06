@@ -18,9 +18,9 @@ class Tanque {
 	}
 
 	method avanzar(direccion) {
-		const siguientePosiscion = direccion.siguiente(self.position())
-		if (administradorDeDestinos.destinoValido(siguientePosiscion)) {
-			self.position(siguientePosiscion)
+		const siguientePosicion = direccion.siguiente(self.position())
+		if (administradorDeDestinos.destinoValido(siguientePosicion)) {
+			self.position(siguientePosicion)
 		}
 	}
 
