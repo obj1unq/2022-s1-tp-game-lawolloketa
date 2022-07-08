@@ -13,5 +13,23 @@ object mapa {
 		}
 	}
 
+	method nivel1() {
+		self.lineasHorizontales(2)
+	}
+
+	method lineasHorizontales(n) {
+		if (n <= game.width() - 2) {
+			self.lineaHorizontal(n, 1)
+			self.lineasHorizontales(n + 2)
+		}
+	}
+
+	method lineaHorizontal(n, m) {
+		if (m <= game.width() - 2) {
+			game.addVisualIn(new ParedDeLadrillo(), game.at(m, n))
+			self.lineaHorizontal(n, m + 1)
+		}
+	}
+
 }
 
