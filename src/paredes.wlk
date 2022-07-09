@@ -5,38 +5,63 @@ import balas.*
 
 class Pared {
 
-	var property position = game.at(1, 1)
+	var property position = null
 	var property destruible = true
-	const property atravesable = false
-	var property image = "pared_3.png"
-	var property vidas = 3
+	var property impactosRecibidos = 0
 
-	method recibirDanio()
+	method image() {
+		return "pared_" + self.tipoDePared() + "_" + self.vidasRestantes() + ".png"
+	}
+
+	method vidasRestantes()
+
+	method recibirDanio() {
+		if (destruible) {
+			impactosRecibidos++
+			self.validarVidas()
+		}
+	}
 
 	method validarVidas() {
-		if (vidas == 0) game.removeVisual(self)
+		if (self.vidasRestantes() == 0) game.removeVisual(self)
 	}
+
+	method tipoDePared()
 
 }
 
 class ParedDeLadrillo inherits Pared {
 
-	override method recibirDanio() {
-		if (destruible) {
-			vidas = vidas - 1
-			self.validarVidas()
-			image = "pared_" + vidas + ".png"
-		}
+	override method vidasRestantes() {
+		return 3 - self.impactosRecibidos()
+	}
+
+	override method tipoDePared() {
+		return "ladrillo"
 	}
 
 }
 
 class ParedDeMadera inherits Pared {
 
-	override method image() = "pared_1.png"
+	override method vidasRestantes() {
+		return 1 - self.impactosRecibidos()
+	}
 
-	override method recibirDanio() {
+	override method tipoDePared() {
+		return "madera"
 	}
 
 }
 
+object paredes{
+	method todas(){
+		return [new ParedDeLadrillo(), new ParedDeMadera()]
+	}
+}
+
+object creadorDeParedes{
+	method nuevaPared(){
+		return paredes.todas().anyOne()
+	}
+}

@@ -6,19 +6,28 @@ import extras.*
 
 object tanque {
 
-	var property position = game.at(5, 0)
+	var property position = game.at(5, 1)
 	var property image = "tanque_arriba_01.png"
 	var property orientacion = arriba
 	var property vidas = 3
 	var property puntaje = 0
 
 	method mover(direccion) {
-		if (orientacion != direccion) {
-			self.image("tanque_" + direccion.direccionATexto() + "_01.png")
-			orientacion = direccion
+		self.cambiarOrientacion(direccion)
+		self.avanzar(direccion)
+	}
+
+	method cambiarOrientacion(nuevaDireccion) {
+		if (orientacion != nuevaDireccion) {
+			self.image("tanque_" + nuevaDireccion.direccionATexto() + "_01.png")
+			orientacion = nuevaDireccion
 		}
-		if (administradorDeDestinos.destinoValido(direccion.siguiente(self.position()))) {
-			self.position(direccion.siguiente(self.position()))
+	}
+
+	method avanzar(direccion) {
+		const siguientePosicion = direccion.siguiente(self.position())
+		if (administradorDeDestinos.destinoValido(siguientePosicion)) {
+			self.position(siguientePosicion)
 		}
 	}
 

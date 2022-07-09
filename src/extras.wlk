@@ -64,3 +64,7 @@ object administradorDeDestinos {
 
 }
 
+class Civil{
+	
+}
+

@@ -7,12 +7,12 @@ import extras.*
 class Bala {
 
 	var property position = null
-	var property direccion = null
+	var property orientacion = null
 
-	method image() = "bala_vertical_2.png"
+	method image() = "bala.png"
 
 	method avanzar() {
-		self.position(direccion.siguiente(self.position()))
+		self.position(orientacion.siguiente(self.position()))
 		self.impactar()
 	}
 
@@ -21,19 +21,11 @@ class Bala {
 			game.uniqueCollider(self).recibirDanio()
 			administradorDeBalas.eliminarBala(self)
 		}
-	// game.colliders(self).forEach({collider => collider.recibirDanio()})
 	}
 
 	method recibirDanio() {
+		administradorDeBalas.eliminarBala(self)
 	}
-
-}
-
-class BalaLiviana inherits Bala {
-
-}
-
-class BalaPesada inherits Bala {
 
 }
 
@@ -42,10 +34,8 @@ object administradorDeBalas {
 	const property balas = []
 
 	method crearBala(_tanque) {
-		const bala = new Bala()
+		const bala = new Bala(position = _tanque.orientacion().siguiente(_tanque.position()), orientacion = _tanque.orientacion())
 		balas.add(bala)
-		bala.position(_tanque.position())
-		bala.direccion(_tanque.orientacion())
 		game.addVisual(bala)
 	}
 

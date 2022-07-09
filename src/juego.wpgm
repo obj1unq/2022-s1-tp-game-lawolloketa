@@ -24,11 +24,11 @@ program juego {
 	keyboard.up().onPressDo({ tanque.mover(arriba) })
 	keyboard.down().onPressDo({ tanque.mover(abajo) })
 	keyboard.space().onPressDo({ tanque.disparar() })
-	game.onTick(100, "moverBalas", { administradorDeBalas.moverBalas() })
+	game.onTick(200, "moverBalas", { administradorDeBalas.moverBalas() })
 	game.onTick(2000, "crearTanques", { administradorDeTanques.crearTanque() })
 	game.onTick(2000, "dispararEnemigos", { administradorDeTanques.disparar() })
 	game.onTick(750, "moverTanques", { administradorDeTanques.moverTanques() })
-	game.showAttributes(tanque)
+
 	mapa.nivel1()
 	game.start()
 }
