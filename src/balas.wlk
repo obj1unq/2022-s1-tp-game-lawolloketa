@@ -24,7 +24,6 @@ class Bala {
 	}
 
 	method recibirDanio() {
-		administradorDeBalas.eliminarBala(self)
 	}
 
 }

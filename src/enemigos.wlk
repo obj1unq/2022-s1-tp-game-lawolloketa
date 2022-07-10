@@ -7,9 +7,16 @@ import extras.*
 class Tanque {
 
 	var property position = game.at(5, 5)
-	var property image = "enemigo_1_abajo_01.png"
 	var property orientacion = abajo
-	var property vidas = 3
+	var property impactosRecibidos = 0
+
+	method image() {
+		return "enemigo_" + self.tipoDeTanque() + "_" + orientacion.direccionATexto() + ".png"
+	}
+
+	method tipoDeTanque() {
+		return "normal"
+	}
 
 	method mover() {
 		const nuevaDireccion = direcciones.todas().anyOne()
@@ -26,21 +33,24 @@ class Tanque {
 
 	method cambiarOrientacion(nuevaDireccion) {
 		if (orientacion != nuevaDireccion) {
-			self.image("enemigo_1_" + nuevaDireccion.direccionATexto() + "_01.png")
 			orientacion = nuevaDireccion
 		}
 	}
 
 	method recibirDanio() {
+		impactosRecibidos++
 		self.validarVidas()
-		vidas = vidas - 1
 	}
 
 	method validarVidas() {
-		if (vidas == 0) {
+		if (self.vidasRestantes() == 0) {
 			tanque.sumarPuntos(self)
 			administradorDeTanques.eliminarTanque(self)
 		}
+	}
+
+	method vidasRestantes() {
+		return 3 - impactosRecibidos
 	}
 
 	method disparar() {
@@ -57,13 +67,21 @@ class Tanque {
 
 class TanquePesado inherits Tanque {
 
-	override method image() = "enemigo_1_down_down_01.png"
+	override method tipoDeTanque() {
+		return "pesado"
+	}
+
+	override method vidasRestantes() {
+		return 7 - impactosRecibidos
+	}
 
 }
 
-class TanqueLiviano inherits Tanque {
+object tiposDeEnemigos {
 
-	override method image() = "enemigo_1_down_down_01.png"
+	method todos() {
+		return [ new Tanque(), new TanquePesado() ]
+	}
 
 }
 
@@ -74,7 +92,7 @@ object administradorDeTanques {
 
 	method crearTanque() {
 		if (tanques.size() < max) {
-			const tanqueNuevo = new Tanque()
+			const tanqueNuevo = tiposDeEnemigos.todos().anyOne()
 			tanques.add(tanqueNuevo)
 			game.addVisual(tanqueNuevo)
 		}
