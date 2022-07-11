@@ -23,7 +23,7 @@ class Pared {
 	}
 
 	method validarVidas() {
-		if (self.vidasRestantes() == 0) game.removeVisual(self)
+		if (self.vidasRestantes() < 0) game.removeVisual(self)
 	}
 
 	method tipoDePared()

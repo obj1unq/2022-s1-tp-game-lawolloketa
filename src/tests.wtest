@@ -26,12 +26,62 @@ describe "Tanque" {
 	}
 
 	test "Tanque destruye dos enemigos con una vida y los tanques desaparecen" {
-		var enemigo = new Tanque(vidas = 1)
-		var enemigo2 = new Tanque(vidas = 1)
+		const enemigo = new Tanque()
+		const enemigo2 = new Tanque()
 		enemigo.recibirDanio()
 		enemigo2.recibirDanio()
 		assert.notThat(game.hasVisual(enemigo))
 		assert.notThat(game.hasVisual(enemigo2))
+	}
+
+}
+
+describe "Enemigos" {
+
+	method initialize() {
+		game.clear()
+	}
+
+	test "Tanque enemigo común con tres vidas, recibe dos impactos y desaparece del mapa" {
+		const enemigo = new Tanque()
+		assert.equals(3, enemigo.vidasRestantes())
+		enemigo.recibirDanio()
+		enemigo.recibirDanio()
+		assert.notThat(game.hasVisual(enemigo))
+	}
+
+	test "Tanque enemigo pesado con siete vidas, recibe seis impactos y desaparece del mapa" {
+		const enemigo = new TanquePesado()
+		assert.equals(7, enemigo.vidasRestantes())
+		enemigo.recibirDanio()
+		enemigo.recibirDanio()
+		enemigo.recibirDanio()
+		enemigo.recibirDanio()
+		enemigo.recibirDanio()
+		enemigo.recibirDanio()
+		assert.notThat(game.hasVisual(enemigo))
+	}
+
+}
+
+describe "Paredes" {
+
+	method initialize() {
+		game.clear()
+	}
+
+	test "Pared de madera desaparece luego de un impacto" {
+		const paredDeMadera = new ParedDeMadera()
+		paredDeMadera.recibirDanio()
+		assert.notThat(game.hasVisual(paredDeMadera))
+	}
+
+	test "Pared de ladrillo desaparece luego de tres impactos" {
+		const paredDeLadrillo = new ParedDeLadrillo()
+		paredDeLadrillo.recibirDanio()
+		paredDeLadrillo.recibirDanio()
+		paredDeLadrillo.recibirDanio()
+		assert.notThat(game.hasVisual(paredDeLadrillo))
 	}
 
 }

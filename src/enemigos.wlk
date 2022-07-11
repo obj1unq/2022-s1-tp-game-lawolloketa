@@ -75,13 +75,17 @@ class TanquePesado inherits Tanque {
 		return 7 - impactosRecibidos
 	}
 
+	override method puntosQueAporta() {
+		return 1000
+	}
+
 }
 
 object administradorDeTanques {
 
 	const max = 3
 	const property tanques = []
-	const property tipoDeTanques = [new Tanque(), new TanquePesado()]
+	const property tipoDeTanques = [ new Tanque(), new TanquePesado() ]
 
 	method crearTanque() {
 		if (tanques.size() < max) {
@@ -90,8 +94,8 @@ object administradorDeTanques {
 			game.addVisual(tanqueNuevo)
 		}
 	}
-	
-	method tanqueNuevo(){
+
+	method tanqueNuevo() {
 		return tipoDeTanques.anyOne()
 	}
 
