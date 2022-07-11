@@ -70,15 +70,8 @@ describe "Paredes" {
 		game.clear()
 	}
 
-	test "Pared de madera desaparece luego de un impacto" {
-		const paredDeMadera = new ParedDeMadera()
-		paredDeMadera.recibirDanio()
-		assert.notThat(game.hasVisual(paredDeMadera))
-	}
-
-	test "Pared de ladrillo desaparece luego de tres impactos" {
+	test "Pared de ladrillo desaparece luego de dos impactos" {
 		const paredDeLadrillo = new ParedDeLadrillo()
-		paredDeLadrillo.recibirDanio()
 		paredDeLadrillo.recibirDanio()
 		paredDeLadrillo.recibirDanio()
 		assert.notThat(game.hasVisual(paredDeLadrillo))
