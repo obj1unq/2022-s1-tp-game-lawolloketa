@@ -1,4 +1,7 @@
 import wollok.game.*
+import enemigos.*
+import tank.*
+import balas.*
 
 object derecha {
 
@@ -64,7 +67,25 @@ object administradorDeDestinos {
 
 }
 
-class Civil{
+class Civil inherits Tanque{
 	
+	override method image(){
+		return ""
+	}
+	
+	override method vidasRestantes() {
+		return 5 - impactosRecibidos
+	}
+	
+	override method puntosQueAporta() {
+		return -2000
+	}
+	
+	override method validarVidas() {
+		if (self.vidasRestantes() == 0) {
+			tanque.sumarPuntos(self)
+			game.removeVisual(self)
+		}
+	}
 }
 
