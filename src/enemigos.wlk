@@ -6,15 +6,15 @@ import extras.*
 
 class Tanque {
 
-	var property position = game.at(5, 5)
-	var property orientacion = abajo
+	var property position = null
+	var property orientacion = null
 	var property impactosRecibidos = 0
 
 	method image() {
-		return self.tipoDeTanque() + "_" + orientacion.direccionATexto() + ".png"
+		return self.tipo() + "_" + orientacion.direccionATexto() + ".png"
 	}
 
-	method tipoDeTanque() {
+	method tipo() {
 		return "normal"
 	}
 
@@ -67,7 +67,7 @@ class Tanque {
 
 class TanquePesado inherits Tanque {
 
-	override method tipoDeTanque() {
+	override method tipo() {
 		return "pesado"
 	}
 
@@ -80,9 +80,10 @@ class TanquePesado inherits Tanque {
 	}
 
 }
+
 class Civil inherits Tanque {
 
-	override method tipoDeTanque() {
+	override method tipo() {
 		return "civil"
 	}
 
@@ -93,30 +94,55 @@ class Civil inherits Tanque {
 	override method puntosQueAporta() {
 		return -2000
 	}
-	
-	override method disparar(){}
+
+	override method disparar() {
+	}
 
 }
 
 object administradorDeTanques {
 
-	const max = 3
+	const max = 4
 	const property tanques = []
 
-	method tiposDeTanques() {
-		return [ new Tanque(), new TanquePesado() ]
+	method posicionesDeAparicion() {
+		return [ game.at(1,1), game.at(1,game.width()-2), game.at(game.width()-2,1), game.at(game.width()-2,game.width()-2) ]
+	}
+
+	method tipos() {
+		return [ new Tanque(), new TanquePesado(), new Civil() ]
 	}
 
 	method crearTanque() {
 		if (tanques.size() < max) {
 			const tanqueNuevo = self.tanqueNuevo()
-			tanques.add(tanqueNuevo)
-			game.addVisual(tanqueNuevo)
+			self.validarCivil(tanqueNuevo)
 		}
 	}
 
+	method validarCivil(vehiculo) {
+		if (not (self.hayCivil() and self.esCivil(vehiculo))) {
+			self.agregarVehiculo(vehiculo)
+		}
+	}
+
+	method agregarVehiculo(vehiculo) {
+		vehiculo.position(self.posicionesDeAparicion().anyOne())
+		vehiculo.orientacion(direcciones.todas().anyOne())
+		tanques.add(vehiculo)
+		game.addVisual(vehiculo)
+	}
+
+	method hayCivil() {
+		return tanques.any{ vehiculo => self.esCivil(vehiculo) }
+	}
+
+	method esCivil(vehiculo) {
+		return vehiculo.tipo() == "civil"
+	}
+
 	method tanqueNuevo() {
-		return self.tiposDeTanques().anyOne()
+		return self.tipos().anyOne()
 	}
 
 	method eliminarTanque(tanqueEliminado) {
