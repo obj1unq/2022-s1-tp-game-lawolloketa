@@ -85,7 +85,10 @@ object administradorDeTanques {
 
 	const max = 3
 	const property tanques = []
-	const property tipoDeTanques = [ new Tanque(), new TanquePesado() ]
+
+	method tiposDeTanques() {
+		return [ new Tanque(), new TanquePesado() ]
+	}
 
 	method crearTanque() {
 		if (tanques.size() < max) {
@@ -96,7 +99,7 @@ object administradorDeTanques {
 	}
 
 	method tanqueNuevo() {
-		return tipoDeTanques.anyOne()
+		return self.tiposDeTanques().anyOne()
 	}
 
 	method eliminarTanque(tanqueEliminado) {
