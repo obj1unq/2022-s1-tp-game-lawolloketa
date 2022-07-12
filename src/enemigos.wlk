@@ -11,7 +11,7 @@ class Tanque {
 	var property impactosRecibidos = 0
 
 	method image() {
-		return "enemigo_" + self.tipoDeTanque() + "_" + orientacion.direccionATexto() + ".png"
+		return self.tipoDeTanque() + "_" + orientacion.direccionATexto() + ".png"
 	}
 
 	method tipoDeTanque() {
@@ -50,7 +50,7 @@ class Tanque {
 	}
 
 	method vidasRestantes() {
-		return 3 - impactosRecibidos
+		return 4 - impactosRecibidos
 	}
 
 	method disparar() {
@@ -78,6 +78,23 @@ class TanquePesado inherits Tanque {
 	override method puntosQueAporta() {
 		return 1000
 	}
+
+}
+class Civil inherits Tanque {
+
+	override method tipoDeTanque() {
+		return "civil"
+	}
+
+	override method vidasRestantes() {
+		return 2 - impactosRecibidos
+	}
+
+	override method puntosQueAporta() {
+		return -2000
+	}
+	
+	override method disparar(){}
 
 }
 
@@ -113,29 +130,6 @@ object administradorDeTanques {
 
 	method disparar() {
 		tanques.forEach({ tanqueEnemigo => tanqueEnemigo.disparar()})
-	}
-
-}
-
-class Civil inherits Tanque {
-
-	override method image() {
-		return "hola.jpg"
-	}
-
-	override method vidasRestantes() {
-		return 5 - impactosRecibidos
-	}
-
-	override method puntosQueAporta() {
-		return -2000
-	}
-
-	override method validarVidas() {
-		if (self.vidasRestantes() == 0) {
-			tanque.sumarPuntos(self)
-			game.removeVisual(self)
-		}
 	}
 
 }
