@@ -79,3 +79,20 @@ describe "Paredes" {
 
 }
 
+describe "Civil" {
+
+	method initialize() {
+		game.clear()
+	}
+
+	test "Civil desaparece del juego luego de 4 impactos" {
+		const civil = new Civil()
+		civil.recibirDanio()
+		civil.recibirDanio()
+		civil.recibirDanio()
+		civil.recibirDanio()
+		assert.notThat(game.hasVisual(civil))
+	}
+
+}
+

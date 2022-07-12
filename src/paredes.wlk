@@ -54,14 +54,19 @@ class ParedDeMadera inherits Pared {
 
 }
 
-object paredes{
-	method todas(){
-		return [new ParedDeLadrillo(), new ParedDeMadera()]
+object paredes {
+
+	method todas() {
+		return [ new ParedDeLadrillo(), new ParedDeMadera() ]
 	}
+
 }
 
-object creadorDeParedes{
-	method nuevaPared(){
+object creadorDeParedes {
+
+	method nuevaPared() {
 		return paredes.todas().anyOne()
 	}
+
 }
+
