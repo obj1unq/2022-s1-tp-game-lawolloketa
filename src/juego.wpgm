@@ -8,6 +8,7 @@ import mapas.*
 
 program juego {
 	game.title("Battle City")
+	game.ground("fondo_de_celda.png")
 //	game.boardGround("fondo.jpg")
 	game.cellSize(45)
 	game.height(15)
