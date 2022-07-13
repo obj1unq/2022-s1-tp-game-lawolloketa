@@ -21,9 +21,11 @@ object tanque inherits Tanque {
 		administradorDeBalas.crearBala(self)
 	}
 
-	override method recibirDanio() {
-		super()
-		self.validarPerder()
+	override method validarVidas() {
+		if (self.vidasRestantes() == 0) {
+			self.sumarPuntos(self)
+			self.validarPerder()
+		}
 	}
 
 	method validarPerder() {
