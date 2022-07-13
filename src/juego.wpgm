@@ -14,6 +14,7 @@ program juego {
 	game.width(15)
 //	game.ground("ground.png")
 	game.addVisual(tanque)
+	administradorDeVidas.modificarVida(tanque.vidasRestantes())
 //	var civil = new Civil()
 //	game.addVisual(civil)
 //	var tanque1 = new EnemyTank()

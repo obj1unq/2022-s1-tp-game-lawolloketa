@@ -67,12 +67,48 @@ object administradorDeDestinos {
 
 }
 
-//object vida{
-//	
-//	tanque.vidasRestanes()
-//	
-//	method borrarVida(){
-//		
-//	}
-//	
-//}
+object administradorDeVidas {
+
+	var property vidas = []
+
+	method modificarVida(vida) {
+		self.limpiarVidas()
+		self.agregarVidas(vida)
+		
+	}
+	method agregarVidas(vida){
+		if (vida > 0) {
+			self.agregarVida(vida)
+			self.agregarVidas(vida - 1)
+		}
+	}
+
+	method agregarVida(numeroDeVida) {
+		const vida = new Vida()
+		game.addVisualIn(vida, game.at(numeroDeVida, game.height() - 1))
+		vidas.add(vida)
+	}
+
+	method limpiarVidas() {
+		if (not vidas.isEmpty()) {
+			vidas.forEach{ vida => self.borrarVida(vida)}
+		}
+	}
+
+	method borrarVida(vida) {
+		game.removeVisual(vida)
+		vidas.remove(vida)
+	}
+
+}
+
+class Vida {
+
+	const property position = null
+
+	method image() {
+		return "vida.png"
+	}
+
+}
+

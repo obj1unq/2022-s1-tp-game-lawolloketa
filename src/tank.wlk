@@ -21,6 +21,12 @@ object tanque inherits Tanque {
 		administradorDeBalas.crearBala(self)
 	}
 
+	override method recibirDanio() {
+		impactosRecibidos++
+		administradorDeVidas.modificarVida(self.vidasRestantes())
+		self.validarVidas()
+	}
+
 	override method validarVidas() {
 		if (self.vidasRestantes() == 0) {
 			self.sumarPuntos(self)
