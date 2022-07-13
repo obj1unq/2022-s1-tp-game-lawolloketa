@@ -50,7 +50,7 @@ object tanque inherits Tanque {
 	}
 
 	method validarGanar() {
-		if (self.puntaje() >= 15) self.ganar()
+		if (self.puntaje() >= 150) self.ganar()
 	}
 
 	method ganar() {
