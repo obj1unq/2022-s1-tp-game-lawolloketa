@@ -1,10 +1,10 @@
-# Nombre del juego (<- borrar y completar)
+# Battle City
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
+- Chiara Forti Dono
+- Pablo Bragoni
+- Ezequiel Pedrerol
 
 ## Capturas
 
@@ -12,7 +12,11 @@
 
 ## Reglas de Juego / Instrucciones
 
-(Escribirlas)
+- Derrotar a la mayor cantidad de tanques posibles.
+
+- Evitar que destruyen a los civiles.
+
+- Llegar a 150 puntos para poder ganar
 
 
 ## Otros
