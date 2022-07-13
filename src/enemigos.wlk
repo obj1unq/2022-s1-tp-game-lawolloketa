@@ -50,7 +50,7 @@ class Tanque {
 	}
 
 	method vidasRestantes() {
-		return 4 - impactosRecibidos
+		return 5 - impactosRecibidos
 	}
 
 	method disparar() {
@@ -60,7 +60,7 @@ class Tanque {
 	}
 
 	method puntosQueAporta() {
-		return 500
+		return 5
 	}
 
 }
@@ -72,11 +72,11 @@ class TanquePesado inherits Tanque {
 	}
 
 	override method vidasRestantes() {
-		return 7 - impactosRecibidos
+		return 10 - impactosRecibidos
 	}
 
 	override method puntosQueAporta() {
-		return 1000
+		return 10
 	}
 
 }
@@ -92,7 +92,7 @@ class Civil inherits Tanque {
 	}
 
 	override method puntosQueAporta() {
-		return -2000
+		return -20
 	}
 
 	override method disparar() {
@@ -102,7 +102,7 @@ class Civil inherits Tanque {
 
 object administradorDeTanques {
 
-	const max = 4
+	const max = 6
 	const property tanques = []
 
 	method posicionesDeAparicion() {
