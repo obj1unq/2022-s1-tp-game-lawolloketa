@@ -13,6 +13,7 @@ program juego {
 	game.height(16)
 	game.width(15)
 	game.addVisual(tanque)
+	game.addVisual(puntos)
 	administradorDeVidas.modificarVida(tanque.vidasRestantes())
 	mapa.bordeDelMapa(0)
 	mapa.nivel1()
