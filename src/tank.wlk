@@ -43,7 +43,7 @@ object tanque inherits Tanque {
 	}
 
 	override method puntosQueAporta() {
-		return -1
+		return -5
 	}
 
 	method sumarPuntos(objeto) {
