@@ -54,9 +54,7 @@ class Tanque {
 	}
 
 	method disparar() {
-		if ([ true, true, false ].anyOne()) {
-			administradorDeBalas.crearBala(self)
-		}
+		administradorDeBalas.crearBala(self)
 	}
 
 	method puntosQueAporta() {

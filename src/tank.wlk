@@ -17,10 +17,6 @@ object tanque inherits Tanque {
 		self.avanzar(direccion)
 	}
 
-	override method disparar() {
-		administradorDeBalas.crearBala(self)
-	}
-
 	override method recibirDanio() {
 		impactosRecibidos++
 		administradorDeVidas.modificarVida(self.vidasRestantes())
