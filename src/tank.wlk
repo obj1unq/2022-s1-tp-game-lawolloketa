@@ -44,7 +44,15 @@ object tanque inherits Tanque {
 
 	method sumarPuntos(objeto) {
 		puntaje = puntaje + objeto.puntosQueAporta()
+		self.validarGanar()
 	}
 
+	method validarGanar() {
+		if (self.puntaje() >= 150) self.ganar()
+	}
+	
+	method ganar() {
+		//agregar pantalla de ganaste
+	}
 }
 
