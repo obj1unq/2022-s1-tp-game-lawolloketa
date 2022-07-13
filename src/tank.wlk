@@ -35,7 +35,9 @@ object tanque inherits Tanque {
 	}
 
 	method perder() {
-		game.removeVisual(self)
+		//game.removeVisual(self)
+		game.clear()
+		game.addVisual(perder)
 	}
 
 	override method puntosQueAporta() {
@@ -48,12 +50,12 @@ object tanque inherits Tanque {
 	}
 
 	method validarGanar() {
-		if (self.puntaje() >= 150) self.ganar()
+		if (self.puntaje() >= 15) self.ganar()
 	}
 
 	method ganar() {
-	// agregar pantalla de ganaste
+		game.clear()
+		game.addVisual(ganar)
 	}
 
 }
-

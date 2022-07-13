@@ -112,3 +112,14 @@ class Vida {
 
 }
 
+object ganar {
+	var property position = game.at(4,5)
+	
+	method image() = "ganaste.png"
+}
+
+object perder {
+	var property position = game.at(4,5)
+	
+	method image() = "perdiste.png"
+}
