@@ -74,9 +74,9 @@ object administradorDeVidas {
 	method modificarVida(vida) {
 		self.limpiarVidas()
 		self.agregarVidas(vida)
-		
 	}
-	method agregarVidas(vida){
+
+	method agregarVidas(vida) {
 		if (vida > 0) {
 			self.agregarVida(vida)
 			self.agregarVidas(vida - 1)
