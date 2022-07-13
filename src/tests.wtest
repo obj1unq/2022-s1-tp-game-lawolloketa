@@ -12,15 +12,19 @@ describe "Tanque" {
 		game.clear()
 	}
 
-	test "Tanque con dos vidas, recibe daño dos veces y queda con 0 vidas" {
-		tanque.vidas(2)
+	test "Tanque con cuatro vidas, recibe daño cuatro veces y queda con 0 vidas" {
+		game.addVisualIn(tanque, game.center())
 		tanque.recibirDanio()
 		tanque.recibirDanio()
-		assert.equals(0, tanque.vidas())
+		tanque.recibirDanio()
+		tanque.recibirDanio()
+		assert.equals(0, tanque.vidasRestantes())
 	}
 
 	test "Tanque con una vida desaparece del tablero" {
-		tanque.vidas(1)
+		tanque.recibirDanio()
+		tanque.recibirDanio()
+		tanque.recibirDanio()
 		tanque.recibirDanio()
 		assert.notThat(game.hasVisual(tanque))
 	}

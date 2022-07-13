@@ -4,48 +4,38 @@ import balas.*
 import paredes.*
 import extras.*
 
-object tanque {
+object tanque inherits Tanque {
 
-	var property position = game.at(5, 1)
-	var property image = "tanque_arriba_01.png"
-	var property orientacion = arriba
-	var property vidas = 3
 	var property puntaje = 0
+
+	override method tipo() {
+		return "tanque"
+	}
 
 	method mover(direccion) {
 		self.cambiarOrientacion(direccion)
 		self.avanzar(direccion)
 	}
 
-	method cambiarOrientacion(nuevaDireccion) {
-		if (orientacion != nuevaDireccion) {
-			self.image("tanque_" + nuevaDireccion.direccionATexto() + "_01.png")
-			orientacion = nuevaDireccion
-		}
-	}
-
-	method avanzar(direccion) {
-		const siguientePosicion = direccion.siguiente(self.position())
-		if (administradorDeDestinos.destinoValido(siguientePosicion)) {
-			self.position(siguientePosicion)
-		}
-	}
-
-	method disparar() {
+	override method disparar() {
 		administradorDeBalas.crearBala(self)
 	}
 
-	method recibirDanio() {
+	override method recibirDanio() {
+		super()
 		self.validarPerder()
-		vidas = vidas - 1
 	}
 
 	method validarPerder() {
-		if (vidas == 0) self.perder()
+		if (self.vidasRestantes() == 0) self.perder()
 	}
 
 	method perder() {
 		game.removeVisual(self)
+	}
+
+	override method puntosQueAporta() {
+		return -100
 	}
 
 	method sumarPuntos(objeto) {

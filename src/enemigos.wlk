@@ -6,8 +6,8 @@ import extras.*
 
 class Tanque {
 
-	var property position = null
-	var property orientacion = null
+	var property position = game.center()
+	var property orientacion = arriba
 	var property impactosRecibidos = 0
 
 	method image() {

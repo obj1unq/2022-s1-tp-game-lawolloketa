@@ -67,3 +67,12 @@ object administradorDeDestinos {
 
 }
 
+//object vida{
+//	
+//	tanque.vidasRestanes()
+//	
+//	method borrarVida(){
+//		
+//	}
+//	
+//}
