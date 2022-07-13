@@ -13,14 +13,16 @@ describe "Tanque" {
 		game.addVisual(tanque)
 	}
 
-	test "Tanque con cuatro vidas, recibe daño tres veces y queda con 1 vida" {
+	test "Tanque con cinco vidas, recibe daño cuatro veces y queda con una vida" {
+		tanque.recibirDanio()
 		tanque.recibirDanio()
 		tanque.recibirDanio()
 		tanque.recibirDanio()
 		assert.equals(1, tanque.vidasRestantes())
 	}
 
-	test "Tanque con cuatro vidas desaparece del tablero" {
+	test "Tanque con cinco vidas desaparece del tablero" {
+		tanque.recibirDanio()
 		tanque.recibirDanio()
 		tanque.recibirDanio()
 		tanque.recibirDanio()
@@ -36,18 +38,22 @@ describe "Enemigos" {
 		game.clear()
 	}
 
-	test "Tanque enemigo común con cuatro vidas, recibe dos impactos y desaparece del mapa" {
+	test "Tanque enemigo común con cinco vidas, recibe cuatro impactos y desaparece del mapa" {
 		const enemigo = new Tanque()
-		assert.equals(4, enemigo.vidasRestantes())
+		assert.equals(5, enemigo.vidasRestantes())
+		enemigo.recibirDanio()
 		enemigo.recibirDanio()
 		enemigo.recibirDanio()
 		enemigo.recibirDanio()
 		assert.notThat(game.hasVisual(enemigo))
 	}
 
-	test "Tanque enemigo pesado con siete vidas, recibe seis impactos y desaparece del mapa" {
+	test "Tanque enemigo pesado con diez vidas, recibe nueve impactos y desaparece del mapa" {
 		const enemigo = new TanquePesado()
-		assert.equals(7, enemigo.vidasRestantes())
+		assert.equals(10, enemigo.vidasRestantes())
+		enemigo.recibirDanio()
+		enemigo.recibirDanio()
+		enemigo.recibirDanio()
 		enemigo.recibirDanio()
 		enemigo.recibirDanio()
 		enemigo.recibirDanio()
