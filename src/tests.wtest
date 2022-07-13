@@ -13,7 +13,7 @@ describe "Tanque" {
 		game.addVisual(tanque)
 	}
 
-	test "Tanque con cuatro vidas, recibe daño tres veces y queda con 1 vidas" {
+	test "Tanque con cuatro vidas, recibe daño tres veces y queda con 1 vida" {
 		tanque.recibirDanio()
 		tanque.recibirDanio()
 		tanque.recibirDanio()
@@ -28,15 +28,6 @@ describe "Tanque" {
 		assert.notThat(game.hasVisual(tanque))
 	}
 
-	test "Tanque destruye dos enemigos con una vida y los tanques desaparecen" {
-		const enemigo = new Tanque()
-		const enemigo2 = new Tanque()
-		enemigo.recibirDanio()
-		enemigo2.recibirDanio()
-		assert.notThat(game.hasVisual(enemigo))
-		assert.notThat(game.hasVisual(enemigo2))
-	}
-
 }
 
 describe "Enemigos" {
@@ -45,9 +36,10 @@ describe "Enemigos" {
 		game.clear()
 	}
 
-	test "Tanque enemigo común con tres vidas, recibe dos impactos y desaparece del mapa" {
+	test "Tanque enemigo común con cuatro vidas, recibe dos impactos y desaparece del mapa" {
 		const enemigo = new Tanque()
-		assert.equals(3, enemigo.vidasRestantes())
+		assert.equals(4, enemigo.vidasRestantes())
+		enemigo.recibirDanio()
 		enemigo.recibirDanio()
 		enemigo.recibirDanio()
 		assert.notThat(game.hasVisual(enemigo))
@@ -88,11 +80,8 @@ describe "Civil" {
 		game.clear()
 	}
 
-	test "Civil desaparece del juego luego de 4 impactos" {
+	test "Civil desaparece del juego luego de un impacto" {
 		const civil = new Civil()
-		civil.recibirDanio()
-		civil.recibirDanio()
-		civil.recibirDanio()
 		civil.recibirDanio()
 		assert.notThat(game.hasVisual(civil))
 	}
