@@ -50,7 +50,7 @@ class Tanque {
 	}
 
 	method vidasRestantes() {
-		return 5 - impactosRecibidos
+		return 2 - impactosRecibidos
 	}
 
 	method disparar() {
@@ -70,7 +70,7 @@ class TanquePesado inherits Tanque {
 	}
 
 	override method vidasRestantes() {
-		return 10 - impactosRecibidos
+		return 4 - impactosRecibidos
 	}
 
 	override method puntosQueAporta() {
@@ -90,7 +90,7 @@ class Civil inherits Tanque {
 	}
 
 	override method puntosQueAporta() {
-		return -20
+		return -5
 	}
 
 	override method disparar() {

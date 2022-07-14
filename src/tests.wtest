@@ -37,27 +37,19 @@ describe "Enemigos" {
 
 	method initialize() {
 		game.clear()
+		game.addVisual(puntos)
 	}
 
-	test "Tanque enemigo común con cinco vidas, recibe cuatro impactos y desaparece del mapa" {
+	test "Tanque enemigo común con dos vidas, recibe un impacto y desaparece del mapa" {
 		const enemigo = new Tanque()
-		assert.equals(5, enemigo.vidasRestantes())
-		enemigo.recibirDanio()
-		enemigo.recibirDanio()
-		enemigo.recibirDanio()
+		assert.equals(2, enemigo.vidasRestantes())
 		enemigo.recibirDanio()
 		assert.notThat(game.hasVisual(enemigo))
 	}
 
-	test "Tanque enemigo pesado con diez vidas, recibe nueve impactos y desaparece del mapa" {
+	test "Tanque enemigo pesado con cuatro vidas, recibe tres impactos y desaparece del mapa" {
 		const enemigo = new TanquePesado()
-		assert.equals(10, enemigo.vidasRestantes())
-		enemigo.recibirDanio()
-		enemigo.recibirDanio()
-		enemigo.recibirDanio()
-		enemigo.recibirDanio()
-		enemigo.recibirDanio()
-		enemigo.recibirDanio()
+		assert.equals(4, enemigo.vidasRestantes())
 		enemigo.recibirDanio()
 		enemigo.recibirDanio()
 		enemigo.recibirDanio()
@@ -70,6 +62,7 @@ describe "Paredes" {
 
 	method initialize() {
 		game.clear()
+		game.addVisual(puntos)
 	}
 
 	test "Pared de ladrillo desaparece luego de dos impactos" {
@@ -85,6 +78,7 @@ describe "Civil" {
 
 	method initialize() {
 		game.clear()
+		game.addVisual(puntos)
 	}
 
 	test "Civil desaparece del juego luego de un impacto" {
