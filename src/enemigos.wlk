@@ -6,14 +6,16 @@ import extras.*
 
 class Tanque {
 
-	var property image = null
-	var property tipo = "normal"
 	var property position = game.center()
 	var property orientacion = arriba
 	var property impactosRecibidos = 0
 
 	method image() {
 		return self.tipo() + "_" + orientacion.direccionATexto() + ".png"
+	}
+
+	method tipo() {
+		return "normal"
 	}
 
 	method mover() {
@@ -63,6 +65,10 @@ class Tanque {
 
 class TanquePesado inherits Tanque {
 
+	override method tipo() {
+		return "pesado"
+	}
+
 	override method vidasRestantes() {
 		return 10 - impactosRecibidos
 	}
@@ -74,6 +80,10 @@ class TanquePesado inherits Tanque {
 }
 
 class Civil inherits Tanque {
+
+	override method tipo() {
+		return "civil"
+	}
 
 	override method vidasRestantes() {
 		return 2 - impactosRecibidos
@@ -98,7 +108,7 @@ object administradorDeTanques {
 	}
 
 	method tipos() {
-		return [ new Tanque(tipo = "normal"), new TanquePesado(tipo = "pesado"), new Civil(tipo = "civil") ]
+		return [ new Tanque(), new TanquePesado(), new Civil() ]
 	}
 
 	method crearTanque() {
