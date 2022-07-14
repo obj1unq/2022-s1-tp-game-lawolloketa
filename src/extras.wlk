@@ -3,6 +3,17 @@ import enemigos.*
 import tank.*
 import balas.*
 
+object puntos {
+
+	var property position = game.at(game.width() - 1, game.height())
+	var property image = "fondo_de_celda.png"
+
+	method decirPuntaje() {
+		game.say(self, tanque.puntaje().toString())
+	}
+
+}
+
 object derecha {
 
 	method siguiente(posicion) {
@@ -113,13 +124,18 @@ class Vida {
 }
 
 object ganar {
-	var property position = game.at(4,5)
-	
+
+	var property position = game.at(4, 5)
+
 	method image() = "ganaste.png"
+
 }
 
 object perder {
-	var property position = game.at(4,5)
-	
+
+	var property position = game.at(4, 5)
+
 	method image() = "perdiste.png"
+
 }
+

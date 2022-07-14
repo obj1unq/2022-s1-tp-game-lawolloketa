@@ -36,25 +36,27 @@ object tanque inherits Tanque {
 
 	method perderJuego() {
 		game.clear()
-		game.schedule(200, {game.addVisual(perder)})
+		game.schedule(200, { game.addVisual(perder)})
 	}
 
 	override method puntosQueAporta() {
-		return -5
+		return 0
 	}
 
 	method sumarPuntos(objeto) {
 		puntaje = puntaje + objeto.puntosQueAporta()
+		puntos.decirPuntaje()
 		self.validarGanar()
 	}
 
 	method validarGanar() {
-		if (self.puntaje() >= 5) self.ganarJuego()
+		if (self.puntaje() >= 100) self.ganarJuego()
 	}
 
 	method ganarJuego() {
 		game.clear()
-		game.schedule(200, {game.addVisual(ganar)})
+		game.schedule(200, { game.addVisual(ganar)})
 	}
 
 }
+
