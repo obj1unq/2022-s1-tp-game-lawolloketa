@@ -32,21 +32,4 @@
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 		<nature>org.uqbar.project.wollok.wollokNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>assets/screenshot_0.jpg</name>
-			<type>1</type>
-			<location>C:/Users/chiar/Desktop/screenshot_0.jpg</location>
-		</link>
-		<link>
-			<name>assets/screenshot_1.jpg</name>
-			<type>1</type>
-			<location>C:/Users/chiar/Desktop/screenshot_1.jpg</location>
-		</link>
-		<link>
-			<name>assets/screenshot_2.jpg</name>
-			<type>1</type>
-			<location>C:/Users/chiar/Desktop/screenshot_2.jpg</location>
-		</link>
-	</linkedResources>
 </projectDescription>
