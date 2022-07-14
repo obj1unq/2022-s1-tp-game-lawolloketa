@@ -8,11 +8,11 @@
 
 ## Capturas
 
-<img src="assets/screenshot_0.jpg">
+<img src="assets/screenshot_0.jpg" height="358" width="334">>
 
-<img src="assets/screenshot_1.jpg">
+<img src="assets/screenshot_1.jpg" height="358" width="334">
 
-<img src="assets/screenshot_1.jpg">
+<img src="assets/screenshot_1.jpg" height="358" width="334">
 
 
 ## Reglas de Juego / Instrucciones
