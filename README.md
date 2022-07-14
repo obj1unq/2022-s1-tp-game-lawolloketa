@@ -8,12 +8,6 @@
 
 ## Capturas
 
-<img src="assets/screenshot_0.jpg">
-
-<img src="assets/screenshot_1.jpg">
-
-<img src="assets/screenshot_2.jpg">
-
 
 ## Reglas de Juego / Instrucciones
 
