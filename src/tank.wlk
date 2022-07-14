@@ -49,7 +49,7 @@ object tanque inherits Tanque {
 
 	method sumarPuntos(objeto) {
 		puntaje = puntaje + objeto.puntosQueAporta()
-		puntos.decirPuntaje()
+//		puntos.decirPuntaje()
 		self.validarGanar()
 	}
 

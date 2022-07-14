@@ -3,13 +3,69 @@ import enemigos.*
 import tank.*
 import balas.*
 
-object puntos {
+//object puntos {
+//
+//	var property position = game.at(game.width() - 1, game.height())
+//	var property image = "fondo_de_celda.png"
+//
+//	method decirPuntaje() {
+//		game.say(self, tanque.puntaje().toString())
+//	}
+//
+//}
 
-	var property position = game.at(game.width() - 1, game.height())
-	var property image = "fondo_de_celda.png"
+object puntosUnidad {
 
-	method decirPuntaje() {
-		game.say(self, tanque.puntaje().toString())
+	var property position = game.at(game.width() - 2, game.height()-1)
+
+	method image() {
+		return self.valor().toString() + ".png"
+	}
+
+	method valor() {
+		return tanque.puntaje() % 10
+	}
+
+}
+
+object puntosDecena {
+
+	var property position = game.at(game.width() - 3, game.height()-1)
+
+	method image() {
+		return self.valor().toString() + ".png"
+	}
+
+	method valor() {
+		return tanque.puntaje().div(10)
+	}
+
+}
+
+object puntosCentena {
+
+	var property position = game.at(game.width() - 4, game.height()-1)
+
+	method image() {
+		return self.valor().toString() + ".png"
+	}
+
+	method valor() {
+		return tanque.puntaje().div(100)
+	}
+
+}
+
+object signo {
+
+	var property position = null
+
+	method image() {
+		return self.valor() + ".png"
+	}
+
+	method valor() {
+		return tanque.puntaje().div(100)
 	}
 
 }
