@@ -11,7 +11,6 @@ describe "Tanque" {
 	method initialize() {
 		game.clear()
 		game.addVisual(tanque)
-//		game.addVisual(puntos)
 	}
 
 	test "Tanque con cinco vidas, recibe daño cuatro veces y queda con una vida" {
@@ -37,7 +36,6 @@ describe "Enemigos" {
 
 	method initialize() {
 		game.clear()
-//		game.addVisual(puntos)
 	}
 
 	test "Tanque enemigo común con dos vidas, recibe un impacto y desaparece del mapa" {
@@ -62,7 +60,6 @@ describe "Paredes" {
 
 	method initialize() {
 		game.clear()
-//		game.addVisual(puntos)
 	}
 
 	test "Pared de ladrillo desaparece luego de dos impactos" {
@@ -78,7 +75,6 @@ describe "Civil" {
 
 	method initialize() {
 		game.clear()
-//		game.addVisual(puntos)
 	}
 
 	test "Civil desaparece del juego luego de un impacto" {

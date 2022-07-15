@@ -16,7 +16,7 @@ object tanque inherits Tanque {
 		self.cambiarOrientacion(direccion)
 		self.avanzar(direccion)
 	}
-	
+
 	override method vidasRestantes() {
 		return 5 - impactosRecibidos
 	}
