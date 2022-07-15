@@ -44,8 +44,8 @@ class Tanque {
 
 	method validarVidas() {
 		if (self.vidasRestantes() == 0) {
-			tanque.sumarPuntos(self)
 			administradorDeTanques.eliminarTanque(self)
+			self.serEliminado()
 		}
 	}
 
@@ -59,6 +59,12 @@ class Tanque {
 
 	method puntosQueAporta() {
 		return 5
+	}
+
+	method serEliminado() {
+		tanque.sumarPuntos(self)
+		game.removeVisual(self)
+		administradorDeTanques.eliminarTanque(self)
 	}
 
 }
@@ -100,7 +106,7 @@ class Civil inherits Tanque {
 
 object administradorDeTanques {
 
-	const max = 6
+	const max = 4
 	const property tanques = []
 
 	method posicionesDeAparicion() {
@@ -145,7 +151,6 @@ object administradorDeTanques {
 
 	method eliminarTanque(tanqueEliminado) {
 		tanques.remove(tanqueEliminado)
-		game.removeVisual(tanqueEliminado)
 	}
 
 	method moverTanques() {
@@ -154,6 +159,10 @@ object administradorDeTanques {
 
 	method disparar() {
 		tanques.forEach({ tanqueEnemigo => tanqueEnemigo.disparar()})
+	}
+
+	method eliminarTodos() {
+		tanques.forEach{ tanqueAEliminar => tanqueAEliminar.serEliminado()}
 	}
 
 }

@@ -24,9 +24,10 @@ program juego {
 	keyboard.up().onPressDo({ tanque.mover(arriba) })
 	keyboard.down().onPressDo({ tanque.mover(abajo) })
 	keyboard.space().onPressDo({ tanque.disparar() })
-	game.onTick(50, "moverBalas", { administradorDeBalas.moverBalas() })
+	game.onTick(100, "moverBalas", { administradorDeBalas.moverBalas() })
 	game.onTick(2000, "crearTanques", { administradorDeTanques.crearTanque() })
 	game.onTick(2000, "dispararEnemigos", { administradorDeTanques.disparar() })
 	game.onTick(500, "moverTanques", { administradorDeTanques.moverTanques() })
+	game.onTick(10000, "activarPremio", { administradorDePremios.activarPremio() })
 	game.start()
 }
