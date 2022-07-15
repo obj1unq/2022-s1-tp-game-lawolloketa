@@ -1,8 +1,33 @@
 import wollok.game.*
-import pepita.*
+import tank.*
+import enemigos.*
+import balas.*
+import paredes.*
+import extras.*
+import mapas.*
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	game.title("Battle City")
+	game.ground("fondo_de_celda.png")
+	game.cellSize(45)
+	game.height(16)
+	game.width(15)
+	game.addVisual(tanque)
+	game.addVisual(puntosUnidad)
+	game.addVisual(puntosDecena)
+	game.addVisual(puntosCentena)
+	administradorDeVidas.modificarVida(tanque.vidasRestantes())
+	mapa.bordeDelMapa(0)
+	mapa.nivel1()
+	keyboard.left().onPressDo({ tanque.mover(izquierda) })
+	keyboard.right().onPressDo({ tanque.mover(derecha) })
+	keyboard.up().onPressDo({ tanque.mover(arriba) })
+	keyboard.down().onPressDo({ tanque.mover(abajo) })
+	keyboard.space().onPressDo({ tanque.disparar() })
+	game.onTick(100, "moverBalas", { administradorDeBalas.moverBalas() })
+	game.onTick(2000, "crearTanques", { administradorDeTanques.crearTanque() })
+	game.onTick(2000, "dispararEnemigos", { administradorDeTanques.disparar() })
+	game.onTick(500, "moverTanques", { administradorDeTanques.moverTanques() })
+	game.onTick(10000, "activarPremio", { administradorDePremios.activarPremio() })
 	game.start()
 }
